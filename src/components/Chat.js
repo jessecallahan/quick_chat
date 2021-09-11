@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Chat(props) {
   return (
     <React.Fragment>
-      <div>
+      <div className="background-blue">
         <h3>{props.content}</h3>
         <hr />
       </div>

@@ -32,7 +32,7 @@ class ChatControl extends React.Component {
             </div>
           </div>
           <div class="flex-row">
-            <div >
+            <div class="div3">
               <ChatList />
             </div>
           </div>
