@@ -1,0 +1,19 @@
+.flex-row {
+  flex-direction: row;
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+  display: flex;
+}
+
+.flex-body {
+  display: flex;
+}
+
+.flex-body div:not([class*="flex"]) {
+  border: 1px solid white;
+  flex: 1 1 200px;
+  width: 300px;
+}
