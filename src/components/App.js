@@ -1,13 +1,22 @@
 import React from 'react';
 import ChatControl from './ChatControl';
 import Header from './Header'
+import Signin from "./Signin";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <React.Fragment>
+    <Router>
       <Header />
-      <ChatControl />
-    </React.Fragment>
+      <Switch>
+        <Route path="/signin">
+          <Signin />
+        </Route>
+        <Route path="/chatroom1">
+          <ChatControl />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
