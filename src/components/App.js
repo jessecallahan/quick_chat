@@ -3,6 +3,7 @@ import ChatControl from './ChatControl';
 import Header from './Header'
 import Signin from "./Signin";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import './../App.css';
 
 function App() {
   return (

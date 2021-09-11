@@ -1,11 +1,11 @@
 import '../chat.css';
 import ChatForm from './ChatForm'
 import ChatList from './ChatList'
+import FriendList from './FriendList'
 import React from 'react'
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import { withFirestore, isLoaded } from 'react-redux-firebase';
-
 
 
 class ChatControl extends React.Component {
@@ -22,19 +22,15 @@ class ChatControl extends React.Component {
   render() {
     return (
       <div>
-        <div class="flex-body">
-          <div class="flex-column">
-            <div >
-              <ChatForm />
-            </div>
-            <div style={{ background: "#0980cc" }}>
-              friends
-            </div>
+        <div class="parent">
+          <div class="div1">
+            <ChatForm />
           </div>
-          <div class="flex-row">
-            <div class="div3">
-              <ChatList />
-            </div>
+          <div class="div2">
+            <FriendList />
+          </div>
+          <div class="div3">
+            <ChatList />
           </div>
 
         </div>

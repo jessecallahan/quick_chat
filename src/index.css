@@ -12,15 +12,4 @@ code {
     monospace;
 }
 
-.background-blue {
-  background-color: rgb(51, 225, 176);
-  scroll-snap-type: y mandatory;
-  scroll-snap-align: start;
-  font-size: 10px;
-}
 
-.div3 {
-  height: 530px;
-   overflow: auto;
-   position: relative;
-}
