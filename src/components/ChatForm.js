@@ -10,7 +10,8 @@ function NewTicketForm(props) {
     return firestore.collection('chats').add(
       {
         content: event.target.content.value,
-        user_id: 1
+        user_id: 1,
+        createdAt: firestore.FieldValue.serverTimestamp(),
       }
     );
   }
