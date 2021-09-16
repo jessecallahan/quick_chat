@@ -1,54 +1,44 @@
-import '../chat.css';
 import ChatForm from './ChatForm'
 import ChatList from './ChatList'
 import FriendList from './FriendList'
 import React from 'react'
-import { connect } from 'react-redux';
-import PropTypes from "prop-types";
-import { withFirestore, isLoaded } from 'react-redux-firebase';
+import AnnonSignIn from './AnnonSignIn';
+import 'firebase/database';
 
 
-class ChatControl extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+import { useLocation } from "react-router-dom";
 
-    };
+function ChatControl(props) {
+  let data = useLocation();
+  console.log(data);
+
+  let topLeftCurrentState = null;
+
+
+  if (props.currentUser != null) {
+    topLeftCurrentState = <ChatForm main_id={data.pathname} />
   }
-
-
-
-
-  render() {
-    return (
-      <div>
-        <div class="parent">
-          <div class="div1">
-            <ChatForm />
-          </div>
-          <div class="div2">
-            <FriendList />
-          </div>
-          <div class="div3">
-            <ChatList />
-          </div>
-
+  else {
+    topLeftCurrentState = <AnnonSignIn friendsListHandler={props.friendsListHandler} annonSetter={props.annonSetter} />
+  }
+  console.log(props)
+  return (
+    <div>
+      <div class="parent">
+        <div class="div1">
+          {topLeftCurrentState}
         </div>
+        <div class="div2">
+          <FriendList friendsList={props.friendsList} />
+        </div>
+        <div class="div3">
+          <ChatList main_id={data.pathname} />
+        </div>
+
       </div>
-    )
-  }
+    </div>
+  )
+
 }
 
-ChatControl.propTypes = {
-};
-
-const mapStateToProps = state => {
-
-  return {
-    state: state
-  }
-}
-
-ChatControl = connect(mapStateToProps)(ChatControl);
-
-export default withFirestore(ChatControl);
+export default ChatControl;

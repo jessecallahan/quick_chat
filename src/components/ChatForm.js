@@ -1,20 +1,29 @@
 import React from "react";
 import { useFirestore } from 'react-redux-firebase';
 import PropTypes from 'prop-types';
+import firebase from "firebase/app";
+import "firebase/auth";
+
 
 function NewTicketForm(props) {
   const firestore = useFirestore();
 
+
+
   function addChatToFirestore(event) {
     event.preventDefault();
-    return firestore.collection('chats').add(
+    const user = firebase.auth().currentUser;
+    return firestore.collection(props.main_id).add(
       {
+        name: user.displayName,
         content: event.target.content.value,
-        user_id: 1,
+        user_id: user.uid,
         createdAt: firestore.FieldValue.serverTimestamp(),
       }
     );
+
   }
+
 
   return (
     <React.Fragment>

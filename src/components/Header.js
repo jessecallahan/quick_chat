@@ -8,7 +8,7 @@ const ChatHeader = styled.h1`
 }
 .column {
   float: left;
-  width: 33.33%;
+  width: 25%;
 }
 
 /* Clear floats after the columns */
@@ -20,7 +20,9 @@ const ChatHeader = styled.h1`
 }
 `;
 
-function Header() {
+function Header(props) {
+  let path = props.known_path();
+
   return (
     <React.Fragment>
       <ChatHeader>
@@ -33,7 +35,16 @@ function Header() {
               <Link to="/signin">Sign In</Link>
             </div>
             <div class="column">
-              <Link to="/chatroom1">Chat Room</Link>
+              <Link to="/signup">signup</Link>
+            </div>
+            <div class="column">
+              <Link to={{
+                pathname: path,
+                state: {
+                  chatRoomId: props.mainUser
+                }
+              }}>Chat Room</Link>
+
             </div>
           </div>
         </div>
