@@ -1,8 +1,17 @@
 import React from 'react'
 import firebase from "firebase/app";
+import { useFirestore } from 'react-redux-firebase';
 
 
 export default function AnnonSignIn(props) {
+  const firestore = useFirestore();
+
+  function friendPart(name) {
+    var friendsListRef = firestore.collection(props.main_id).doc("friendsList");
+    friendsListRef.update({
+      names: firebase.firestore.FieldValue.arrayUnion(name)
+    });
+  }
 
   function annonSignIn(event) {
     event.preventDefault();
@@ -20,6 +29,7 @@ export default function AnnonSignIn(props) {
         console.log(errorMessage)
       });
     props.annonSetter(displayName)
+    friendPart(displayName);
 
   }
 

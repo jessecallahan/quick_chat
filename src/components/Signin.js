@@ -7,13 +7,18 @@ import { useFirestore } from 'react-redux-firebase';
 function Signin(props) {
   const firestore = useFirestore();
 
-  function addFriendsListToFirestore(input) {
-
-    return firestore.collection(props.friendsListHandler(input)).add(
-      {
-        name: input,
-      }
-    );
+  function addFriendsListToFirestore(name, id) {
+    const data = {
+      friendsList: true,
+      names: [name]
+    }
+    firestore.collection(props.known_path(id)).doc("friendsList").set(data);
+    // return firestore.collection(props.known_path(id)).add(
+    //   {
+    //     friendsList: true,
+    //     name: [name]
+    //   }
+    // );
 
   }
   function doSignIn(event) {
@@ -30,7 +35,7 @@ function Signin(props) {
       console.log(error.message);
     });
 
-    addFriendsListToFirestore(firebase.auth().currentUser.displayName)
+    addFriendsListToFirestore(firebase.auth().currentUser.displayName, firebase.auth().currentUser.uid)
   }
 
   function doSignOut() {

@@ -51,7 +51,7 @@ class App extends React.Component {
         <Header known_path={this.createPath} mainUser={this.state.mainUser} />
         <Switch>
           <Route path="/signin">
-            <Signin toggleUserOff={this.handleToggleOff} mainUserSetter={this.handleSignIn} friendsListHandler={this.friendsListPath} />
+            <Signin toggleUserOff={this.handleToggleOff} mainUserSetter={this.handleSignIn} known_path={this.createPath} />
           </Route>
           <Route path="/signup">
             <Signup />
