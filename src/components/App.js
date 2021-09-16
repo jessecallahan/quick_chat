@@ -39,10 +39,6 @@ class App extends React.Component {
     var newPath = this.state.mainUser + "_grapeRoom"
     return newPath
   }
-  friendsListPath = () => {
-    var newPath = this.state.mainUser + "_grapeRoom_friends_list"
-    return newPath
-  }
 
   render() {
 

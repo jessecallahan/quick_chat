@@ -9,16 +9,17 @@ function Signin(props) {
 
   function addFriendsListToFirestore(name, id) {
     const data = {
-      friendsList: true,
-      names: [name]
+      names: []
     }
+    console.log(props.known_path(id))
     firestore.collection(props.known_path(id)).doc("friendsList").set(data);
-    // return firestore.collection(props.known_path(id)).add(
-    //   {
-    //     friendsList: true,
-    //     name: [name]
-    //   }
-    // );
+
+    var friendsListRef = firestore.collection(props.known_path(id)).doc("friendsList");
+    friendsListRef.update({
+      names: firebase.firestore.FieldValue.arrayUnion(name)
+    });
+
+    console.log("friend setter triggered")
 
   }
   function doSignIn(event) {
@@ -29,13 +30,13 @@ function Signin(props) {
 
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
       props.mainUserSetter(firebase.auth().currentUser.uid)
-
+      addFriendsListToFirestore(firebase.auth().currentUser.displayName, firebase.auth().currentUser.uid)
       console.log("Successfully signed in!");
     }).catch(function (error) {
       console.log(error.message);
     });
 
-    addFriendsListToFirestore(firebase.auth().currentUser.displayName, firebase.auth().currentUser.uid)
+
   }
 
   function doSignOut() {
