@@ -18,7 +18,7 @@ function Signin(props) {
   }
   function doSignIn(event) {
     event.preventDefault();
-    addFriendsListToFirestore(firebase.auth().currentUser.displayName)
+
     const email = event.target.signinEmail.value;
     const password = event.target.signinPassword.value;
 
@@ -29,6 +29,8 @@ function Signin(props) {
     }).catch(function (error) {
       console.log(error.message);
     });
+
+    addFriendsListToFirestore(firebase.auth().currentUser.displayName)
   }
 
   function doSignOut() {

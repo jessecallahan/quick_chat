@@ -15,8 +15,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       mainUser: null,
-      currentUser: null,
-      friendsList: ["jbone"]
+      currentUser: null
     };
   }
 
@@ -58,7 +57,7 @@ class App extends React.Component {
             <Signup />
           </Route>
           <Route path={this.createPath}>
-            <ChatControl friendsList={this.state.friendsList} annonSetter={this.handleAnnonToggle} currentUser={this.state.currentUser} mainUser={this.state.mainUser} />
+            <ChatControl annonSetter={this.handleAnnonToggle} currentUser={this.state.currentUser} mainUser={this.state.mainUser} />
           </Route>
 
         </Switch>

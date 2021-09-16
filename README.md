@@ -1,6 +1,8 @@
-# Notes For Sept 12
+# Notes For Sept 16
 
 
 get friend box to work 
-brainstorm data organization specifically how each chat group will be linkedup
 clear textarea
+launch it and make sure it works online
+clean up/refactor
+style

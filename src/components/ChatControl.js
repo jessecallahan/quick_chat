@@ -13,13 +13,16 @@ function ChatControl(props) {
   console.log(data);
 
   let topLeftCurrentState = null;
-
+  let linkRender = null;
 
   if (props.currentUser != null) {
     topLeftCurrentState = <ChatForm main_id={data.pathname} />
   }
   else {
     topLeftCurrentState = <AnnonSignIn friendsListHandler={props.friendsListHandler} annonSetter={props.annonSetter} />
+  }
+  if (props.currentUser === props.mainUser) {
+    linkRender = "invite people to your grape room: localhost:3000" + data.pathname
   }
   console.log(props)
   return (
@@ -29,12 +32,12 @@ function ChatControl(props) {
           {topLeftCurrentState}
         </div>
         <div class="div2">
-          <FriendList friendsList={props.friendsList} />
+          <FriendList />
         </div>
         <div class="div3">
           <ChatList main_id={data.pathname} />
         </div>
-
+        {linkRender}
       </div>
     </div>
   )
