@@ -20,8 +20,9 @@ function NewTicketForm(props) {
         user_id: user.uid,
         createdAt: firestore.FieldValue.serverTimestamp(),
       }
-    );
-
+    ).then(function () {
+      event.target.content.value = "";
+    });
   }
 
 

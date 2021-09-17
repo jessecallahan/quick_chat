@@ -26,18 +26,18 @@ function Header(props) {
   return (
     <React.Fragment>
       <ChatHeader>
-        <div class="parent1">
-          <div class="row">
-            <div class="column">
+        <div className="parent1">
+          <div className="row">
+            <div className="column">
               Quick Chat
             </div>
-            <div class="column">
+            <div className="column">
               <Link to="/signin">Sign In</Link>
             </div>
-            <div class="column">
+            <div className="column">
               <Link to="/signup">signup</Link>
             </div>
-            <div class="column">
+            <div className="column">
               <Link to={{
                 pathname: path,
                 state: {

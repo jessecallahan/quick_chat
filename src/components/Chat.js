@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function Chat(props) {
+
   return (
     <React.Fragment>
       <div className="background-blue">
@@ -15,7 +16,7 @@ function Chat(props) {
 Chat.propTypes = {
   name: PropTypes.string,
   content: PropTypes.string.isRequired,
-  user_id: PropTypes.number,
+  user_id: PropTypes.string,
   id: PropTypes.string
 };
 

@@ -1,18 +1,29 @@
 import React, { useState } from 'react';
 import firebase from "firebase/app";
 import 'firebase/database';
-
+import { useFirestore } from 'react-redux-firebase';
 
 function Signup(props) {
+  const firestore = useFirestore();
 
 
+  function setFriendsList(id) {
+
+    const data = {
+      names: []
+    }
+
+    firestore.collection(id + "_grapeRoom").doc("friendsList").set(data);
+  }
   function doSignUp(event) {
+
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
     const displayName = event.target.displayName.value;
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function (result) {
+      setFriendsList(result.user.uid);
       return result.user.updateProfile({
         displayName: displayName
       })
@@ -20,6 +31,7 @@ function Signup(props) {
     }).catch(function (error) {
       console.log(error.message);
     });
+
   }
 
   return (

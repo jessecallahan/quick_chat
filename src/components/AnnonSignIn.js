@@ -28,7 +28,7 @@ export default function AnnonSignIn(props) {
         var errorMessage = error.message;
         console.log(errorMessage)
       });
-    props.annonSetter(displayName)
+
     friendPart(displayName);
 
   }

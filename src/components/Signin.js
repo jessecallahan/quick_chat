@@ -8,11 +8,6 @@ function Signin(props) {
   const firestore = useFirestore();
 
   function addFriendsListToFirestore(name, id) {
-    const data = {
-      names: []
-    }
-    console.log(props.known_path(id))
-    firestore.collection(props.known_path(id)).doc("friendsList").set(data);
 
     var friendsListRef = firestore.collection(props.known_path(id)).doc("friendsList");
     friendsListRef.update({
@@ -40,9 +35,34 @@ function Signin(props) {
   }
 
   function doSignOut() {
+    const user = firebase.auth().currentUser;
+    console.log(user.uid)
+    var friendsListRef = firestore.collection(props.mainUser + "_grapeRoom").doc("friendsList");
+
+    var docRef = firestore.collection(props.mainUser + "_grapeRoom").doc("friendsList")
+    docRef.get().then((doc) => {
+      if (doc.exists) {
+        console.log(doc.data().names)
+        const newFriendsList = doc.data().names.filter(
+          friend => friend !== user.displayName
+        )
+
+        friendsListRef.update({
+          names: newFriendsList
+        });
+
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }).catch((error) => {
+      console.log("Error getting document:", error);
+    });
+
+
     firebase.auth().signOut().then(function () {
       console.log("Successfully signed out!");
-      props.toggleUserOff()
+
 
     }).catch(function (error) {
       console.log(error.message);
