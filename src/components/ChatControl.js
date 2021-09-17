@@ -1,54 +1,52 @@
-import '../chat.css';
 import ChatForm from './ChatForm'
 import ChatList from './ChatList'
 import FriendList from './FriendList'
 import React from 'react'
-import { connect } from 'react-redux';
-import PropTypes from "prop-types";
-import { withFirestore, isLoaded } from 'react-redux-firebase';
+import AnnonSignIn from './AnnonSignIn';
+import 'firebase/database';
+import firebase from "firebase/app";
+
+import { useLocation } from "react-router-dom";
+
+function ChatControl(props) {
+  let data = useLocation();
 
 
-class ChatControl extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+  let topLeftCurrentState = null;
+  let linkRender = null;
 
-    };
+  console.log(props.currentUser);
+
+  const user = firebase.auth().currentUser;
+  console.log(user);
+  if (user !== null) {
+
+    topLeftCurrentState = <ChatForm main_id={data.pathname} />
+    if (user.uid === props.mainUser) {
+      linkRender = "invite people to your grape room: localhost:3000" + data.pathname
+    }
+  }
+  else {
+    topLeftCurrentState = <AnnonSignIn main_id={data.pathname} />
   }
 
-
-
-
-  render() {
-    return (
-      <div>
-        <div class="parent">
-          <div class="div1">
-            <ChatForm />
-          </div>
-          <div class="div2">
-            <FriendList />
-          </div>
-          <div class="div3">
-            <ChatList />
-          </div>
-
+  return (
+    <div>
+      <div className="parent">
+        <div className="div1">
+          {topLeftCurrentState}
         </div>
+        <div className="div2">
+          <FriendList main_id={data.pathname} />
+        </div>
+        <div className="div3">
+          <ChatList main_id={data.pathname} />
+        </div>
+        {linkRender}
       </div>
-    )
-  }
+    </div>
+  )
+
 }
 
-ChatControl.propTypes = {
-};
-
-const mapStateToProps = state => {
-
-  return {
-    state: state
-  }
-}
-
-ChatControl = connect(mapStateToProps)(ChatControl);
-
-export default withFirestore(ChatControl);
+export default ChatControl;
