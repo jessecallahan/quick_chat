@@ -7,7 +7,6 @@ import Landing from "./Landing"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './../App.css';
 import 'firebase/database';
-import firebase from "firebase/app";
 import "firebase/auth";
 
 import { withFirestore } from 'react-redux-firebase';
@@ -16,7 +15,6 @@ import { withFirestore } from 'react-redux-firebase';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       mainUser: null,
       currentUser: null
@@ -34,29 +32,21 @@ class App extends React.Component {
       currentUser: input
     })
   }
-  // handleToggleOff = () => {
-  //   this.setState({
-  //     currentUser: null
-  //   })
-  // }
+
   createPath = () => {
     var newPath = this.state.mainUser + "_grapeRoom"
     return newPath
   }
 
-  // componentDidMount() {
-  //   firebase.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       this.setState({})
-  //     }
-  //   })
-  // }
   render() {
 
     return (
       <Router>
         <Header known_path={this.createPath} mainUser={this.state.mainUser} />
         <Switch>
+          <Route exact path="/">
+            <Landing />
+          </Route>
           <Route path="/signin">
             <Signin mainUserSetter={this.handleSignIn} known_path={this.createPath} mainUser={this.state.mainUser} setCurrentUser={this.handleCurrentUser} />
           </Route>

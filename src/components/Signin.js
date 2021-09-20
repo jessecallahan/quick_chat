@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import firebase from "firebase/app";
 // import { Redirect } from "react-router-dom";
 // import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { useFirestore } from 'react-redux-firebase';
 
 function Signin(props) {
@@ -103,8 +104,12 @@ function Signin(props) {
   // }
 }
 
-// Signin.prototype {
+Signin.propTypes = {
+  mainUserSetter: PropTypes.func,
+  known_path: PropTypes.func,
+  mainUser: PropTypes.string,
+  setCurrentUser: PropTypes.func
+};
 
-// }
 export default Signin
 

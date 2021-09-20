@@ -7,6 +7,7 @@ import AnnonSignIn from './AnnonSignIn';
 import 'firebase/database';
 import firebase from "firebase/app";
 import { useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
 
 function ChatControl(props) {
   let data = useLocation();
@@ -50,4 +51,9 @@ function ChatControl(props) {
 
 }
 
+ChatControl.propTypes = {
+  setCurrentUser: PropTypes.func,
+  mainUser: PropTypes.string,
+  currentUser: PropTypes.string
+}
 export default ChatControl;

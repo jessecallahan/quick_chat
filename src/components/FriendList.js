@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types'
-
+import React, { useState } from 'react';
+import PropTypes from "prop-types";
 import { useFirestore } from 'react-redux-firebase';
 
 function FriendList(props) {
@@ -12,7 +11,6 @@ function FriendList(props) {
     if (doc.exists) {
       setCount(doc.data().names)
     } else {
-      // doc.data() will be undefined in this case
       console.log("No such document!");
     }
   }).catch((error) => {
@@ -32,7 +30,7 @@ function FriendList(props) {
 }
 
 FriendList.propTypes = {
-
+  main_id: PropTypes.string
 }
 
 export default FriendList

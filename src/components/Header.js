@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
+import PropTypes from "prop-types";
 
 const ChatHeader = styled.h1`
 .parent1{
@@ -49,6 +50,11 @@ function Header(props) {
     </React.Fragment >
   );
 }
+
+Header.propTypes = {
+  known_path: PropTypes.func,
+  mainUser: PropTypes.string
+};
 
 export default Header;
 
