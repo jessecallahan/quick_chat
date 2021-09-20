@@ -25,6 +25,7 @@ function Signin(props) {
 
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
       props.mainUserSetter(firebase.auth().currentUser.uid)
+      props.setCurrentUser(firebase.auth().currentUser.uid)
       addFriendsListToFirestore(firebase.auth().currentUser.displayName, firebase.auth().currentUser.uid)
       console.log("Successfully signed in!");
     }).catch(function (error) {
