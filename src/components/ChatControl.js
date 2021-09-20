@@ -1,25 +1,23 @@
 import ChatForm from './ChatForm'
 import ChatList from './ChatList'
 import FriendList from './FriendList'
+import Logout from './Logout'
 import React from 'react'
 import AnnonSignIn from './AnnonSignIn';
 import 'firebase/database';
 import firebase from "firebase/app";
-
 import { useLocation } from "react-router-dom";
 
 function ChatControl(props) {
   let data = useLocation();
 
-
   let topLeftCurrentState = null;
   let linkRender = null;
 
-  console.log(props.currentUser);
-
   const user = firebase.auth().currentUser;
-  console.log(user);
-  if (user !== null) {
+  console.log(props.mainUser)
+  console.log(user)
+  if (user != null && props.currentUser != null) {
 
     topLeftCurrentState = <ChatForm main_id={data.pathname} />
     if (user.uid === props.mainUser) {
@@ -27,7 +25,7 @@ function ChatControl(props) {
     }
   }
   else {
-    topLeftCurrentState = <AnnonSignIn main_id={data.pathname} />
+    topLeftCurrentState = <AnnonSignIn setCurrentUser={props.setCurrentUser} main_id={data.pathname} />
   }
 
   return (
@@ -43,6 +41,9 @@ function ChatControl(props) {
           <ChatList main_id={data.pathname} />
         </div>
         {linkRender}
+        <div>
+          <Logout setCurrentUser={props.setCurrentUser} pathname={data.pathname} />
+        </div>
       </div>
     </div>
   )

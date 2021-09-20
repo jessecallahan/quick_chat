@@ -18,7 +18,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      mainUser: null
+      mainUser: null,
+      currentUser: null
     };
   }
 
@@ -27,11 +28,12 @@ class App extends React.Component {
       mainUser: input
     })
   }
-  // handleAnnonToggle = (input) => {
-  //   this.setState({
-  //     currentUser: input
-  //   })
-  // }
+
+  handleCurrentUser = (input) => {
+    this.setState({
+      currentUser: input
+    })
+  }
   // handleToggleOff = () => {
   //   this.setState({
   //     currentUser: null
@@ -42,13 +44,13 @@ class App extends React.Component {
     return newPath
   }
 
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ user })
-      }
-    })
-  }
+  // componentDidMount() {
+  //   firebase.auth().onAuthStateChanged((user) => {
+  //     if (user) {
+  //       this.setState({})
+  //     }
+  //   })
+  // }
   render() {
 
     return (
@@ -56,13 +58,13 @@ class App extends React.Component {
         <Header known_path={this.createPath} mainUser={this.state.mainUser} />
         <Switch>
           <Route path="/signin">
-            <Signin toggleUserOff={this.handleToggleOff} mainUserSetter={this.handleSignIn} known_path={this.createPath} mainUser={this.state.mainUser} />
+            <Signin mainUserSetter={this.handleSignIn} known_path={this.createPath} mainUser={this.state.mainUser} setCurrentUser={this.handleCurrentUser} />
           </Route>
           <Route path="/signup" >
-            <Signup known_path={this.createPath} mainUser={this.state.mainUser} />
+            <Signup />
           </Route>
           <Router path={this.createPath}>
-            <ChatControl currentUser={this.state.user} mainUser={this.state.mainUser} />
+            <ChatControl mainUser={this.state.mainUser} currentUser={this.state.currentUser} setCurrentUser={this.handleCurrentUser} />
           </Router>
         </Switch>
       </Router>

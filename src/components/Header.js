@@ -39,10 +39,7 @@ function Header(props) {
             </div>
             <div className="column">
               <Link to={{
-                pathname: path,
-                state: {
-                  chatRoomId: props.mainUser
-                }
+                pathname: path
               }}>Chat Room</Link>
 
             </div>

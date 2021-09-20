@@ -19,6 +19,7 @@ export default function AnnonSignIn(props) {
 
     firebase.auth().signInAnonymously()
       .then((result) => {
+        props.setCurrentUser(result.user.uid)
         return result.user.updateProfile({
           displayName: displayName
         })
