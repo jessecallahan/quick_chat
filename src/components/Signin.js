@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import firebase from "firebase/app";
-// import { Redirect } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useFirestore } from 'react-redux-firebase';
+import Logout from './Logout';
+
 
 function Signin(props) {
   const firestore = useFirestore();
+  const [signin, setSignin] = useState(false);
 
   function addFriendsListToFirestore(name, id) {
 
@@ -28,6 +30,7 @@ function Signin(props) {
       props.mainUserSetter(firebase.auth().currentUser.uid)
       props.setCurrentUser(firebase.auth().currentUser.uid)
       addFriendsListToFirestore(firebase.auth().currentUser.displayName, firebase.auth().currentUser.uid)
+      setSignin(true)
       console.log("Successfully signed in!");
     }).catch(function (error) {
       console.log(error.message);
@@ -36,72 +39,35 @@ function Signin(props) {
 
   }
 
-  function doSignOut() {
-    const user = firebase.auth().currentUser;
-    console.log(user.uid)
-    var friendsListRef = firestore.collection(props.mainUser + "_grapeRoom").doc("friendsList");
-
-    var docRef = firestore.collection(props.mainUser + "_grapeRoom").doc("friendsList")
-    docRef.get().then((doc) => {
-      if (doc.exists) {
-        console.log(doc.data().names)
-        const newFriendsList = doc.data().names.filter(
-          friend => friend !== user.displayName
-        )
-
-        friendsListRef.update({
-          names: newFriendsList
-        });
-
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    }).catch((error) => {
-      console.log("Error getting document:", error);
-    });
-
-
-    firebase.auth().signOut().then(function () {
-      console.log("Successfully signed out!");
-
-
-    }).catch(function (error) {
-      console.log(error.message);
-    });
+  if (signin === false) {
+    return (
+      <React.Fragment>
+        <div className="center">
+          <h1>Sign In</h1>
+          <form onSubmit={doSignIn}>
+            <input
+              type='text'
+              name='signinEmail'
+              placeholder='email' />
+            <input
+              type='password'
+              name='signinPassword'
+              placeholder='Password' />
+            <button type='submit'>Sign in</button>
+          </form>
+          <Logout setCurrentUser={props.setCurrentUser} pathname={props.known_path} />
+        </div>
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <Redirect
+        to={{
+          pathname: props.known_path(),
+        }}
+      />
+    );
   }
-
-  // if (signin === false) {
-  return (
-    <React.Fragment>
-      <h1>Sign In</h1>
-      <form onSubmit={doSignIn}>
-        <input
-          type='text'
-          name='signinEmail'
-          placeholder='email' />
-        <input
-          type='password'
-          name='signinPassword'
-          placeholder='Password' />
-        <button type='submit'>Sign in</button>
-      </form>
-
-      <h1>Sign Out</h1>
-      <button onClick={doSignOut}>Sign out</button>
-    </React.Fragment>
-  );
-  // } else {
-  //   const user = firebase.auth().currentUser;
-  //   return (
-  //     <Redirect
-  //       to={{
-  //         pathname: "/chatroom1",
-  //         state: { main_id: user.uid }
-  //       }}
-  //     />
-  //   );
-  // }
 }
 
 Signin.propTypes = {

@@ -8,6 +8,7 @@ import 'firebase/database';
 import firebase from "firebase/app";
 import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
+import LinkCopy from './LinkCopy'
 
 function ChatControl(props) {
   let data = useLocation();
@@ -16,13 +17,23 @@ function ChatControl(props) {
   let linkRender = null;
 
   const user = firebase.auth().currentUser;
-  console.log(props.mainUser)
-  console.log(user)
-  if (user != null && props.currentUser != null) {
 
+  if (user != null && props.currentUser != null) {
+    linkRender = <React.Fragment><div class="wrapper">
+      <div className="bottom_right"><Logout setCurrentUser={props.setCurrentUser} pathname={data.pathname} /></div>
+    </div></React.Fragment>
     topLeftCurrentState = <ChatForm main_id={data.pathname} />
+
     if (user.uid === props.mainUser) {
-      linkRender = "invite people to your grape room: localhost:3000" + data.pathname
+      linkRender = <React.Fragment>
+
+        <div className="bottom_left">
+          <div><LinkCopy main_id={data.pathname} /></div>
+        </div>
+        <div class="wrapper">
+          <div className="bottom_right"><Logout setCurrentUser={props.setCurrentUser} pathname={data.pathname} /></div>
+        </div>
+      </React.Fragment>
     }
   }
   else {
@@ -42,9 +53,7 @@ function ChatControl(props) {
           <ChatList main_id={data.pathname} />
         </div>
         {linkRender}
-        <div>
-          <Logout setCurrentUser={props.setCurrentUser} pathname={data.pathname} />
-        </div>
+
       </div>
     </div>
   )

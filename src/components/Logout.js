@@ -11,59 +11,47 @@ function Logout(props) {
   function doSignOut(e) {
     e.preventDefault();
     props.setCurrentUser(null)
-    const user = firebase.auth().currentUser;
-    console.log(user.displayName)
+    if (firebase.auth().currentUser) {
+      const user = firebase.auth().currentUser;
+      console.log(user.displayName)
 
-    var docRef = firestore.collection(props.pathname).doc("friendsList")
-    docRef.get().then((doc) => {
-      if (doc.exists) {
+      var docRef = firestore.collection(props.pathname).doc("friendsList")
+      docRef.get().then((doc) => {
+        if (doc.exists) {
 
-        const newFriendsList = doc.data().names.filter(
-          friend => friend !== user.displayName
-        )
+          const newFriendsList = doc.data().names.filter(
+            friend => friend !== user.displayName
+          )
 
-        docRef.update({
-          names: newFriendsList
-        });
+          docRef.update({
+            names: newFriendsList
+          });
 
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    }).catch((error) => {
-      console.log("Error getting document:", error);
-    });
-
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      }).catch((error) => {
+        console.log("Error getting document:", error);
+      });
+    }
 
     firebase.auth().signOut().then(function () {
       console.log("Successfully signed out!");
-
-
     }).catch(function (error) {
       console.log(error.message);
     });
 
   }
 
-  // if (signin === false) {
   return (
     <React.Fragment>
-
-      <h1>Sign Out</h1>
-      <button onClick={doSignOut}>Sign out</button>
+      <div>
+        <button onClick={doSignOut}>Sign out</button>
+      </div>
     </React.Fragment>
   );
-  // } else {
-  //   const user = firebase.auth().currentUser;
-  //   return (
-  //     <Redirect
-  //       to={{
-  //         pathname: "/chatroom1",
-  //         state: { main_id: user.uid }
-  //       }}
-  //     />
-  //   );
-  // }
+
 }
 
 Logout.propTypes = {

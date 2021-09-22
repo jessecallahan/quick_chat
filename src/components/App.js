@@ -4,7 +4,7 @@ import Header from './Header'
 import Signin from "./Signin";
 import Signup from "./Signup"
 import Landing from "./Landing"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './../App.css';
 import 'firebase/database';
 import "firebase/auth";
@@ -42,7 +42,7 @@ class App extends React.Component {
 
     return (
       <Router>
-        <Header known_path={this.createPath} mainUser={this.state.mainUser} />
+        <Header known_path={this.createPath} mainUser={this.state.mainUser} currentUser={this.state.currentUser} />
         <Switch>
           <Route exact path="/">
             <Landing />

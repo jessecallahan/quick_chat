@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import firebase from "firebase/app";
 import 'firebase/database';
-// import { Redirect } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { useFirestore } from 'react-redux-firebase';
 
 function Signup(props) {
   const firestore = useFirestore();
+  const [signup, setSignup] = useState(false);
 
   function setFriendsList(id) {
     const data = {
@@ -23,6 +23,7 @@ function Signup(props) {
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function (result) {
       setFriendsList(result.user.uid);
+      setSignup(true);
       return result.user.updateProfile({
         displayName: displayName
       })
@@ -31,27 +32,41 @@ function Signup(props) {
     });
   }
 
-  return (
-    <React.Fragment>
-      <h1>Sign up</h1>
-      <form onSubmit={doSignUp}>
-        <input
-          type='displayName'
-          name='displayName'
-          placeholder='displayName' />
-        <input
-          type='text'
-          name='email'
-          placeholder='email' />
-        <input
-          type='password'
-          name='password'
-          placeholder='Password' />
-        <button type='submit'>Sign up</button>
-      </form>
-    </React.Fragment>
-  );
+  if (signup === false) {
+    return (
+      <React.Fragment>
+        <div className="center">
+          <h1>Sign up</h1>
+          <form onSubmit={doSignUp}>
+            <input
+              type='displayName'
+              name='displayName'
+              placeholder='displayName' />
+            <input
+              type='text'
+              name='email'
+              placeholder='email' />
+            <input
+              type='password'
+              name='password'
+              placeholder='Password' />
+            <button type='submit'>Sign up</button>
+          </form>
+        </div>
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <Redirect
+        to={{
+          pathname: "/signin",
+        }}
+      />
+    );
+  }
+
 }
+
 
 export default Signup;
 
