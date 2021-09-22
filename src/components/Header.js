@@ -15,43 +15,77 @@ import "firebase/auth";
 
 
 function Header(props) {
-  let path = props.known_path();
+  let grapePath = props.known_pathGrape();
+  let orangePath = props.known_pathOrange();
+  let limePath = props.known_pathLime();
   let user = firebase.auth().currentUser;
 
-  if (firebase.auth().currentUser && props.currentUser != null) {
-    if (props.mainUser === user.uid) {
-      return (
-        <React.Fragment>
-          <div className="header">
-            <div className="row">
-              <div className="column">
-                <Link to="/">
-                  <img src={title} className="title_photo" alt='title'></img>
-                </Link>
-              </div>
-              <div className="column">
-                <Link to={{
-                  pathname: path
-                }}>
-                  <img src={grape} className="photo" alt='title'></img>
-                </Link>
-              </div>
-              <div className="column">
-                <Link>
-                  <img src={orange} className="photo" alt='title'></img>
-                </Link>
-              </div>
-              <div className="column">
-                <Link>
-                  <img src={lime} className="photo" alt='title'></img>
-                </Link>
+  if (props.home) {
+    return (
+      <React.Fragment> <div className="header">
+        <div className="row">
+          <div className="column"></div></div></div><br></br><br></br></React.Fragment>);
+  } else {
+
+    if (firebase.auth().currentUser && props.currentUser) {
+      if (props.mainUser === user.uid) {
+        return (
+          <React.Fragment>
+            <div className="header">
+              <div className="row">
+                <div className="column">
+                  <Link to="/">
+                    <img src={title} className="title_photo" alt='title'></img>
+                  </Link>
+                </div>
+                <div className="column" >
+                  <Link to={{
+                    pathname: grapePath
+                  }}
+                  >
+                    <img src={grape} className="photo" alt='title'></img>
+                  </Link>
+                </div>
+                <div className="column" >
+                  <Link to={{
+                    pathname: orangePath
+                  }}>
+                    <img src={orange} className="photo" alt='title'></img>
+                  </Link>
+                </div>
+                <div className="column" >
+                  <Link to={{
+                    pathname: limePath
+                  }}>
+                    <img src={lime} className="photo" alt='title'></img>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
 
-        </React.Fragment >
-      )
+          </React.Fragment >
+        )
 
+      } else {
+
+        return (
+          <React.Fragment>
+
+            <div className="parent1">
+              <div className="row">
+                <div className="column">
+                  <Link to="/">
+                    <img src={title} onClick={() => props.setHome(true)} className="title_photo" alt='title'></img>
+                  </Link>
+                </div>
+
+              </div>
+            </div>
+
+
+          </React.Fragment >
+        );
+      }
     } else {
 
       return (
@@ -61,34 +95,15 @@ function Header(props) {
             <div className="row">
               <div className="column">
                 <Link to="/">
-                  <img src={title} className="title_photo" alt='title'></img>
+                  <img src={title} onClick={() => props.setHome(true)} className="title_photo" alt='title'></img>
                 </Link>
               </div>
-
             </div>
           </div>
-
 
         </React.Fragment >
       );
     }
-  } else {
-
-    return (
-      <React.Fragment>
-
-        <div className="parent1">
-          <div className="row">
-            <div className="column">
-              <Link to="/">
-                <img src={title} className="title_photo" alt='title'></img>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-      </React.Fragment >
-    );
   }
 }
 

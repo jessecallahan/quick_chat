@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 function LinkCopy(props) {
   const [copySuccess, setCopySuccess] = useState('');
+  const [thing, setThing] = useState('')
 
   // your function to copy here
 
@@ -14,11 +15,12 @@ function LinkCopy(props) {
     }
   };
 
-  let thing = "localhost:3000" + props.main_id;
+  // let thing = "localhost:3000" + props.main_id;
+  console.log(props.main_id)
   return (
     <React.Fragment>
-      <div>
-        <textarea rows="1" cols="60">{thing}</textarea>
+      <div className="bottom_left">
+        <p>{"localhost:3000" + props.main_id}</p>
         <button onClick={() => copyToClipBoard("localhost:3000" + props.main_id)}>
           Click here to copy
         </button>

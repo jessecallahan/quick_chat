@@ -13,6 +13,8 @@ function Signup(props) {
       names: []
     }
     firestore.collection(id + "_grapeRoom").doc("friendsList").set(data);
+    firestore.collection(id + "_orangeRoom").doc("friendsList").set(data);
+    firestore.collection(id + "_limeRoom").doc("friendsList").set(data);
   }
 
   function doSignUp(event) {

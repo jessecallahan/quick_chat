@@ -4,7 +4,7 @@ import Header from './Header'
 import Signin from "./Signin";
 import Signup from "./Signup"
 import Landing from "./Landing"
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './../App.css';
 import 'firebase/database';
 import "firebase/auth";
@@ -33,29 +33,69 @@ class App extends React.Component {
     })
   }
 
-  createPath = () => {
+  createGrapePath = () => {
     var newPath = this.state.mainUser + "_grapeRoom"
     return newPath
   }
 
+  createOrangePath = () => {
+    var newPath = this.state.mainUser + "_orangeRoom"
+    return newPath
+  }
+
+  createLimePath = () => {
+    var newPath = this.state.mainUser + "_limeRoom"
+    return newPath
+  }
+
+  path = () => {
+    this.setState({
+      clicked: true
+    })
+    console.log("thing")
+  }
+  handleSetHome = (input) => {
+    this.setState({
+      homePage: input
+    })
+  }
   render() {
 
     return (
       <Router>
-        <Header known_path={this.createPath} mainUser={this.state.mainUser} currentUser={this.state.currentUser} />
+        <Header
+          home={this.state.homePage}
+          setHome={this.handleSetHome}
+          known_pathGrape={this.createGrapePath}
+          known_pathOrange={this.createOrangePath}
+          known_pathLime={this.createLimePath}
+          mainUser={this.state.mainUser}
+          currentUser={this.state.currentUser}
+          path={this.path} />
         <Switch>
           <Route exact path="/">
-            <Landing />
+            <Landing setHome={this.handleSetHome} />
           </Route>
           <Route path="/signin">
-            <Signin mainUserSetter={this.handleSignIn} known_path={this.createPath} mainUser={this.state.mainUser} setCurrentUser={this.handleCurrentUser} />
+            <Signin mainUserSetter={this.handleSignIn}
+              known_pathGrape={this.createGrapePath}
+              known_pathOrange={this.createOrangePath}
+              known_pathLime={this.createLimePath}
+              mainUser={this.state.mainUser}
+              setCurrentUser={this.handleCurrentUser} />
           </Route>
           <Route path="/signup" >
             <Signup />
           </Route>
-          <Router path={this.createPath}>
+          <Route path={this.createGrapePath} >
             <ChatControl mainUser={this.state.mainUser} currentUser={this.state.currentUser} setCurrentUser={this.handleCurrentUser} />
-          </Router>
+          </Route>
+          <Route path={this.createOrangePath}>
+            <ChatControl mainUser={this.state.mainUser} currentUser={this.state.currentUser} setCurrentUser={this.handleCurrentUser} />
+          </Route>
+          <Route path={this.createLimePath}>
+            <ChatControl mainUser={this.state.mainUser} currentUser={this.state.currentUser} setCurrentUser={this.handleCurrentUser} />
+          </Route>
         </Switch>
       </Router>
     );
