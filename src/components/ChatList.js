@@ -41,6 +41,7 @@ function ChatList(props) {
 
 
 ChatList.propTypes = {
-};
+  main_id: PropTypes.string
+}
 
 export default ChatList;

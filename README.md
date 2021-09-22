@@ -1,8 +1,15 @@
 # Notes For Sept 16
 
-ADD PROPTYPE/TYPECHECK BOXES
-fix signin/signup path after submit
-fix home component
+
+
+
+
+
+implement 3 rooms
+
+
+get home screen working clean
+get friends list working
 refactor/rename
 launch it and make sure it works online
 clean up/refactor

@@ -30,7 +30,7 @@ function NewTicketForm(props) {
     <React.Fragment>
       <form onSubmit={addChatToFirestore}>
         <div><textarea
-          rows="12" cols="60"
+          rows="12" cols="50"
           name='content'
           placeholder='Type Chat Here...' />
         </div>
