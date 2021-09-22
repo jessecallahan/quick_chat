@@ -10,16 +10,23 @@ function Signin(props) {
   const firestore = useFirestore();
   const [signin, setSignin] = useState(false);
 
-  function addFriendsListToFirestore(name, id) {
+  function addFriendsListToFirestore(name) {
+    let friendsListRefGrape = firestore.collection(props.known_pathGrape()).doc("friendsList");
+    let friendsListRefOrange = firestore.collection(props.known_pathOrange()).doc("friendsList");
+    let friendsListRefLime = firestore.collection(props.known_pathLime()).doc("friendsList");
 
-    var friendsListRef = firestore.collection(props.known_path(id)).doc("friendsList");
-    friendsListRef.update({
+    friendsListRefGrape.update({
       names: firebase.firestore.FieldValue.arrayUnion(name)
     });
-
+    friendsListRefOrange.update({
+      names: firebase.firestore.FieldValue.arrayUnion(name)
+    });
+    friendsListRefLime.update({
+      names: firebase.firestore.FieldValue.arrayUnion(name)
+    });
     console.log("friend setter triggered")
-
   }
+
   function doSignIn(event) {
     event.preventDefault();
 
@@ -29,7 +36,7 @@ function Signin(props) {
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
       props.mainUserSetter(firebase.auth().currentUser.uid)
       props.setCurrentUser(firebase.auth().currentUser.uid)
-      addFriendsListToFirestore(firebase.auth().currentUser.displayName, firebase.auth().currentUser.uid)
+      addFriendsListToFirestore(firebase.auth().currentUser.displayName)
       setSignin(true)
       console.log("Successfully signed in!");
     }).catch(function (error) {
@@ -63,7 +70,7 @@ function Signin(props) {
     return (
       <Redirect
         to={{
-          pathname: props.known_path(),
+          pathname: props.known_pathGrape(),
         }}
       />
     );

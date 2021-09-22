@@ -26,8 +26,7 @@ function ChatControl(props) {
 
     if (user.uid === props.mainUser) {
       linkRender = <React.Fragment>
-
-        <div className="bottom_left">
+        <div >
           <div><LinkCopy main_id={data.pathname} /></div>
         </div>
         <div class="wrapper">
@@ -53,7 +52,6 @@ function ChatControl(props) {
           <ChatList main_id={data.pathname} />
         </div>
         {linkRender}
-
       </div>
     </div>
   )

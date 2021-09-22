@@ -11,6 +11,7 @@ function NewTicketForm(props) {
 
 
   function addChatToFirestore(event) {
+    console.log(props.main_id)
     event.preventDefault();
     const user = firebase.auth().currentUser;
     return firestore.collection(props.main_id).add(
