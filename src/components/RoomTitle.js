@@ -2,42 +2,44 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from "prop-types";
 import { useFirestore } from 'react-redux-firebase';
 
-function FriendList(props) {
+function RoomTitle(props) {
   const firestore = useFirestore();
-  const [people, setPeople] = useState([])
+  const [people, setPeople] = useState("")
 
   useEffect(() => {
     function send() {
       const docRef = firestore.collection(props.pathname).doc("friendsList");
-      docRef.onSnapshot((doc) => {
+      docRef.get().then((doc) => {
         if (doc.exists) {
-          setPeople(doc.data().names);
-          console.log("this: " + doc.data().names);
+          setPeople(doc.data().chatRoomName);
+          console.log("this thing: " + doc.data().chatRoomName);
         } else {
           console.log("No such document!");
         }
-      })
+      }).catch((error) => {
+        console.log("Error getting document:", error);
+      });
     }
 
     send();
   }, [firestore, props])
 
 
+
+
+
+
   return (
     <React.Fragment>
-      <div>Friends In This Chat:</div>
-      {people.map((friend, index) =>
-        <div key={index}>{friend}</div>
-      )}
-
+      <div>You're invited to {people}'s Chat Room</div>
     </React.Fragment>
   );
 
 }
 
-FriendList.propTypes = {
+RoomTitle.propTypes = {
   pathname: PropTypes.string
 }
 
-export default FriendList
+export default RoomTitle
 

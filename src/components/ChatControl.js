@@ -9,6 +9,7 @@ import firebase from "firebase/app";
 import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import LinkCopy from './LinkCopy'
+import RoomTitle from './RoomTitle'
 
 function ChatControl(props) {
   let data = useLocation();
@@ -37,9 +38,13 @@ function ChatControl(props) {
     }
   }
   else {
-    topLeftCurrentState = <AnnonSignIn setCurrentUser={props.setCurrentUser} main_id={data.pathname} />
+
+    topLeftCurrentState = <React.Fragment>
+      <div><RoomTitle pathname={data.pathname}></RoomTitle></div>
+      <div><AnnonSignIn setCurrentUser={props.setCurrentUser} main_id={data.pathname} /></div>
+    </React.Fragment>
   }
-  // });
+
   return (
     <div>
       <div className="parent">

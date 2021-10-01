@@ -16,12 +16,15 @@ function Signin(props) {
     let friendsListRefLime = firestore.collection(props.known_pathLime()).doc("friendsList");
 
     friendsListRefGrape.update({
+      chatRoomName: name,
       names: firebase.firestore.FieldValue.arrayUnion(name)
     });
     friendsListRefOrange.update({
+      chatRoomName: name,
       names: firebase.firestore.FieldValue.arrayUnion(name)
     });
     friendsListRefLime.update({
+      chatRoomName: name,
       names: firebase.firestore.FieldValue.arrayUnion(name)
     });
   }

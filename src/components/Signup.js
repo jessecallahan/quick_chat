@@ -10,6 +10,7 @@ function Signup() {
 
   function setFriendsList(id) {
     const data = {
+      chatRoomName: "",
       names: []
     }
     firestore.collection(id + "_grapeRoom").doc("friendsList").set(data);
