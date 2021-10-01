@@ -5,14 +5,14 @@ import { useSelector } from 'react-redux'
 import { useFirestoreConnect, isLoaded } from 'react-redux-firebase'
 import 'firebase/firestore';
 
-
 function ChatList(props) {
 
   useFirestoreConnect([
-    { collection: props.main_id, orderBy: ['createdAt', 'desc'] }
+    { collection: props.pathname, orderBy: ['createdAt', 'desc'] }
   ]);
-  let thing = props.main_id;
-  const chats = useSelector(state => state.firestore.ordered[thing]);
+
+  let path = props.pathname;
+  const chats = useSelector(state => state.firestore.ordered[path]);
 
 
   // let chats = [];
@@ -41,7 +41,7 @@ function ChatList(props) {
 
 
 ChatList.propTypes = {
-  main_id: PropTypes.string
+  pathname: PropTypes.string
 }
 
 export default ChatList;

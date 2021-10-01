@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from 'styled-components';
 import PropTypes from "prop-types";
 import firebase from "firebase/app";
 import title from "../assets/title.jpg"
 import grape from "../assets/grape.jpg"
 import orange from "../assets/orange.jpg"
 import lime from "../assets/lime.jpg"
-import signup from "../assets/signup.jpg"
-import login from "../assets/login.jpg"
+
 
 import "firebase/auth";
 
@@ -108,8 +106,13 @@ function Header(props) {
 }
 
 Header.propTypes = {
-  known_path: PropTypes.func,
-  mainUser: PropTypes.string
+  known_pathGrape: PropTypes.func,
+  known_pathOrange: PropTypes.func,
+  known_pathLime: PropTypes.func,
+  mainUser: PropTypes.string,
+  home: PropTypes.bool,
+  setHome: PropTypes.func,
+  currentUser: PropTypes.string
 };
 
 export default Header;

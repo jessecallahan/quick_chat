@@ -1,16 +1,14 @@
-# Notes For Sept 16
+# Notes For Sept 27
 
 
 
+get logout work out
+make clear component 
+make error component
 
-
-
-implement 3 rooms
-
-
-get home screen working clean
-get friends list working
-refactor/rename
 launch it and make sure it works online
-clean up/refactor
-style
+
+style for mobile/table
+
+clean console - clean up/refactor
+make sure props and protypes are good, clean components - refactor/rename

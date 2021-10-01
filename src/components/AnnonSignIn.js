@@ -1,7 +1,7 @@
 import React from 'react'
 import firebase from "firebase/app";
 import { useFirestore } from 'react-redux-firebase';
-
+// import { getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
 
 export default function AnnonSignIn(props) {
   const firestore = useFirestore();

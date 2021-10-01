@@ -8,17 +8,26 @@
   grid-template-rows: 80px 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 175px;
-  margin: 40px;
-  /* margin-top: 110px; */
+  margin: 40px; 
+ margin-top: 110px;
+
 }
   
-.div1 { grid-area: 1 / 1 / 2 / 2;  overflow:visible}
+.div1 { grid-area: 1 / 1 / 2 / 2;  
+  overflow:visible
+  
+}
 .div2 { grid-area: 2 / 1 / 2 / 2;}
 .div3 { grid-area: 1 / 2 / 3 / 3; 
 
    height: 530px;
    overflow: auto;
    position: relative;
+}
+@media (max-width: 990px) {
+  .App {
+    flex-direction:column
+  }
 }
 
 .background-blue {
@@ -79,4 +88,5 @@
 
 .greenText {
   color:3px solid #8AC007;
+  overflow: clip;
 }
