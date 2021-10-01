@@ -10,6 +10,7 @@ import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import LinkCopy from './LinkCopy'
 import RoomTitle from './RoomTitle'
+import ChatClear from './ChatClear'
 
 function ChatControl(props) {
   let data = useLocation();
@@ -32,7 +33,8 @@ function ChatControl(props) {
           <div><LinkCopy main_id={data.pathname} /></div>
         </div>
         <div className="wrapper">
-          <div className="bottom_right"><Logout setCurrentUser={props.setCurrentUser} pathname={data.pathname} /></div>
+          <div className="bottom_right"><Logout setCurrentUser={props.setCurrentUser} pathname={data.pathname} />
+            <ChatClear pathname={data.pathname} /></div>
         </div>
       </React.Fragment>
     }
