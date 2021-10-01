@@ -4,7 +4,7 @@ import 'firebase/database';
 import { Redirect } from "react-router-dom";
 import { useFirestore } from 'react-redux-firebase';
 
-function Signup(props) {
+function Signup() {
   const firestore = useFirestore();
   const [signup, setSignup] = useState(false);
 

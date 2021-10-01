@@ -17,7 +17,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       mainUser: null,
-      currentUser: null
+      currentUser: null,
+      homePage: null
     };
   }
 
@@ -48,17 +49,18 @@ class App extends React.Component {
     return newPath
   }
 
-  path = () => {
-    this.setState({
-      clicked: true
-    })
-    console.log("thing")
-  }
   handleSetHome = (input) => {
     this.setState({
       homePage: input
     })
   }
+
+  handleFriendsList = (input) => {
+    this.setState({
+      friendsList: input
+    })
+  }
+
   render() {
 
     return (
@@ -71,7 +73,7 @@ class App extends React.Component {
           known_pathLime={this.createLimePath}
           mainUser={this.state.mainUser}
           currentUser={this.state.currentUser}
-          path={this.path} />
+        />
         <Switch>
           <Route exact path="/">
             <Landing setHome={this.handleSetHome} />

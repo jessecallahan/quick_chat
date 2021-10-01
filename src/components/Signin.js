@@ -24,7 +24,6 @@ function Signin(props) {
     friendsListRefLime.update({
       names: firebase.firestore.FieldValue.arrayUnion(name)
     });
-    console.log("friend setter triggered")
   }
 
   function doSignIn(event) {
@@ -42,7 +41,6 @@ function Signin(props) {
     }).catch(function (error) {
       console.log(error.message);
     });
-
 
   }
 

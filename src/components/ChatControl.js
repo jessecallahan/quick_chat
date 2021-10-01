@@ -15,21 +15,22 @@ function ChatControl(props) {
 
   let topLeftCurrentState = null;
   let linkRender = null;
+  let friendShow = null;
 
   const user = firebase.auth().currentUser;
 
-  if (user != null && props.currentUser != null) {
-    linkRender = <React.Fragment><div class="wrapper">
+  if (user && props.currentUser) {
+    topLeftCurrentState = <ChatForm main_id={data.pathname} />
+    linkRender = <React.Fragment><div className="wrapper">
       <div className="bottom_right"><Logout setCurrentUser={props.setCurrentUser} pathname={data.pathname} /></div>
     </div></React.Fragment>
-    topLeftCurrentState = <ChatForm main_id={data.pathname} />
-
+    friendShow = <FriendList pathname={data.pathname} />
     if (user.uid === props.mainUser) {
       linkRender = <React.Fragment>
         <div >
           <div><LinkCopy main_id={data.pathname} /></div>
         </div>
-        <div class="wrapper">
+        <div className="wrapper">
           <div className="bottom_right"><Logout setCurrentUser={props.setCurrentUser} pathname={data.pathname} /></div>
         </div>
       </React.Fragment>
@@ -38,7 +39,7 @@ function ChatControl(props) {
   else {
     topLeftCurrentState = <AnnonSignIn setCurrentUser={props.setCurrentUser} main_id={data.pathname} />
   }
-
+  // });
   return (
     <div>
       <div className="parent">
@@ -46,10 +47,10 @@ function ChatControl(props) {
           {topLeftCurrentState}
         </div>
         <div className="div2">
-          <FriendList main_id={data.pathname} />
+          {friendShow}
         </div>
         <div className="div3">
-          <ChatList main_id={data.pathname} />
+          <ChatList pathname={data.pathname} />
         </div>
         {linkRender}
       </div>

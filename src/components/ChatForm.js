@@ -8,24 +8,20 @@ import "firebase/auth";
 function NewTicketForm(props) {
   const firestore = useFirestore();
 
-
-
-  function addChatToFirestore(event) {
-    console.log(props.main_id)
+  async function addChatToFirestore(event) {
     event.preventDefault();
     const user = firebase.auth().currentUser;
-    return firestore.collection(props.main_id).add(
+
+    await firestore.collection(props.main_id).add(
       {
         name: user.displayName,
         content: event.target.content.value,
         user_id: user.uid,
         createdAt: firestore.FieldValue.serverTimestamp(),
       }
-    ).then(function () {
-      event.target.content.value = "";
-    });
+    );
+    event.target.content.value = "";
   }
-
 
   return (
     <React.Fragment>
