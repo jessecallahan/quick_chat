@@ -1,8 +1,5 @@
-# Notes For Sept 27
+# Notes For Oct 1
 
-
-
-get logout work out
 make clear component 
 make error component
 
