@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import firebase from "firebase/app";
 import { useFirestore } from 'react-redux-firebase';
-// import { getAuth, setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
+import ErrorPage from './ErrorPage';
 
 export default function AnnonSignIn(props) {
   const firestore = useFirestore();
+  const [hasError, setError] = useState(false);
+  let error = "";
 
   function friendPart(name) {
     var friendsListRef = firestore.collection(props.main_id).doc("friendsList");
@@ -25,15 +27,16 @@ export default function AnnonSignIn(props) {
         })
       })
       .catch((error) => {
-        // var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(errorMessage)
+        setError(errorMessage);
       });
 
     friendPart(displayName);
-
   }
 
+  if (hasError) {
+    error = <ErrorPage error={hasError}></ErrorPage>
+  }
   return (
     <React.Fragment>
       <h1>Type You're Name and Go!</h1>
@@ -44,6 +47,7 @@ export default function AnnonSignIn(props) {
           placeholder='name' />
         <button type='submit'>Enter</button>
       </form>
+      {error}
     </React.Fragment>
   )
 }

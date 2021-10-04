@@ -1,55 +1,57 @@
 .App {
   text-align: center;
+
 }
 
 .parent {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 80px 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 175px;
-  margin: 40px; 
- margin-top: 110px;
+  margin: 40px;  */
 
+  max-width: 1200px;
+  margin: 40px auto;
+  display: grid;
+  grid-gap: 1rem;
 }
   
-.div1 { grid-area: 1 / 1 / 2 / 2;  
-  overflow:visible
-  
-}
-.div2 { grid-area: 2 / 1 / 2 / 2;}
-.div3 { grid-area: 1 / 2 / 3 / 3; 
+.div1 {   
+  /* overflow:visible; */
 
-   height: 530px;
+}
+.div2 { 
+   height: 400px;
    overflow: auto;
    position: relative;
 }
-@media (max-width: 990px) {
-  .App {
-    flex-direction:column
-  }
+.div3 {  
+  color:lawngreen;
 }
 
-.background-blue {
- 
-  scroll-snap-type: y mandatory;
-  scroll-snap-align: start;
-  font-size: 10px;
+@media (min-width: 600px) {
+  .parent { 
+    grid-template-columns: repeat(2, 1fr); 
+  
+  }
 }
 
 .bottom_left {
   position: absolute;
   width: 40%;
   bottom: 10px;
+  background-color: white;
   border: 3px solid #8AC007;
+  overflow: clip;
 } 
 
 .bottom_right {
   position:absolute;
-  bottom:0;
+  bottom: 10px;
   right:0;
   bottom: 10px;
-  width: 10%;
+  width: 20%;
 }
 
 .header{
@@ -85,12 +87,9 @@
   width: 50%;
   float:right;
 }
-
-.greenText {
-  color:3px solid #8AC007;
-  overflow: clip;
+.friendsList {
+  font-size: 20px;
 }
-
 /* div {
   border: 3px solid red;
 } */

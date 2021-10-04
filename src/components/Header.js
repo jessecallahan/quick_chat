@@ -6,11 +6,7 @@ import title from "../assets/title.jpg"
 import grape from "../assets/grape.jpg"
 import orange from "../assets/orange.jpg"
 import lime from "../assets/lime.jpg"
-
-
 import "firebase/auth";
-
-
 
 function Header(props) {
   let grapePath = props.known_pathGrape();
@@ -22,7 +18,8 @@ function Header(props) {
     return (
       <React.Fragment> <div className="header">
         <div className="row">
-          <div className="column"></div></div></div><br></br><br></br></React.Fragment>);
+          <div className="column"></div></div></div><br></br><br></br>
+      </React.Fragment>);
   } else {
 
     if (firebase.auth().currentUser && props.currentUser) {
@@ -60,7 +57,6 @@ function Header(props) {
                 </div>
               </div>
             </div>
-
           </React.Fragment >
         )
 
@@ -68,7 +64,6 @@ function Header(props) {
 
         return (
           <React.Fragment>
-
             <div className="parent1">
               <div className="row">
                 <div className="column">
@@ -79,8 +74,6 @@ function Header(props) {
 
               </div>
             </div>
-
-
           </React.Fragment >
         );
       }
@@ -88,7 +81,6 @@ function Header(props) {
 
       return (
         <React.Fragment>
-
           <div className="parent1">
             <div className="row">
               <div className="column">
@@ -98,7 +90,6 @@ function Header(props) {
               </div>
             </div>
           </div>
-
         </React.Fragment >
       );
     }

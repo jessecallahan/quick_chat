@@ -6,11 +6,10 @@ import Signup from "./Signup"
 import Landing from "./Landing"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './../App.css';
+import "./../responsive.css";
 import 'firebase/database';
 import "firebase/auth";
-
 import { withFirestore } from 'react-redux-firebase';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -90,13 +89,19 @@ class App extends React.Component {
             <Signup />
           </Route>
           <Route path={this.createGrapePath} >
-            <ChatControl mainUser={this.state.mainUser} currentUser={this.state.currentUser} setCurrentUser={this.handleCurrentUser} />
+            <ChatControl mainUser={this.state.mainUser}
+              currentUser={this.state.currentUser}
+              setCurrentUser={this.handleCurrentUser} />
           </Route>
           <Route path={this.createOrangePath}>
-            <ChatControl mainUser={this.state.mainUser} currentUser={this.state.currentUser} setCurrentUser={this.handleCurrentUser} />
+            <ChatControl mainUser={this.state.mainUser}
+              currentUser={this.state.currentUser}
+              setCurrentUser={this.handleCurrentUser} />
           </Route>
           <Route path={this.createLimePath}>
-            <ChatControl mainUser={this.state.mainUser} currentUser={this.state.currentUser} setCurrentUser={this.handleCurrentUser} />
+            <ChatControl mainUser={this.state.mainUser}
+              currentUser={this.state.currentUser}
+              setCurrentUser={this.handleCurrentUser} />
           </Route>
         </Switch>
       </Router>

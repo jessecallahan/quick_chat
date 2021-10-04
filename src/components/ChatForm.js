@@ -34,7 +34,6 @@ function NewTicketForm(props) {
         <div>
           <button type='submit'>Send</button>
         </div>
-
       </form>
     </React.Fragment>
   );

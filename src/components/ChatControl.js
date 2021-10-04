@@ -14,10 +14,12 @@ import ChatClear from './ChatClear'
 
 function ChatControl(props) {
   let data = useLocation();
+  console.log(data)
 
   let topLeftCurrentState = null;
   let linkRender = null;
   let friendShow = null;
+  let chatListShow = null;
 
   const user = firebase.auth().currentUser;
 
@@ -27,11 +29,10 @@ function ChatControl(props) {
       <div className="bottom_right"><Logout setCurrentUser={props.setCurrentUser} pathname={data.pathname} /></div>
     </div></React.Fragment>
     friendShow = <FriendList pathname={data.pathname} />
+    chatListShow = <ChatList pathname={data.pathname} />
     if (user.uid === props.mainUser) {
       linkRender = <React.Fragment>
-        <div >
-          <div><LinkCopy main_id={data.pathname} /></div>
-        </div>
+        <LinkCopy main_id={data.pathname} />
         <div className="wrapper">
           <div className="bottom_right"><Logout setCurrentUser={props.setCurrentUser} pathname={data.pathname} />
             <ChatClear pathname={data.pathname} /></div>
@@ -48,22 +49,20 @@ function ChatControl(props) {
   }
 
   return (
-    <div>
-      <div className="parent">
-        <div className="div1">
-          {topLeftCurrentState}
-        </div>
-        <div className="div2">
-          {friendShow}
-        </div>
-        <div className="div3">
-          <ChatList pathname={data.pathname} />
-        </div>
-        {linkRender}
+    <div className="parent">
+      <div className="div1">
+        {topLeftCurrentState}
+        {friendShow}
       </div>
+      <div className="div2">
+        {chatListShow}
+      </div>
+      {/* <div className="div3"> */}
+
+      {/* </div> */}
+      {linkRender}
     </div>
   )
-
 }
 
 ChatControl.propTypes = {

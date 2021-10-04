@@ -12,7 +12,6 @@ function FriendList(props) {
       docRef.onSnapshot((doc) => {
         if (doc.exists) {
           setPeople(doc.data().names);
-          console.log("this: " + doc.data().names);
         } else {
           console.log("No such document!");
         }
@@ -25,14 +24,14 @@ function FriendList(props) {
 
   return (
     <React.Fragment>
-      <div>Friends In This Chat:</div>
-      {people.map((friend, index) =>
-        <div key={index}>{friend}</div>
-      )}
-
+      <div className="friendsList">
+        <div>Friends In This Chat:</div>
+        {people.map((friend, index) =>
+          <div key={index}>{friend}</div>
+        )}
+      </div>
     </React.Fragment>
   );
-
 }
 
 FriendList.propTypes = {

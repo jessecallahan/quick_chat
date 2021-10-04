@@ -4,11 +4,13 @@ import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useFirestore } from 'react-redux-firebase';
 import Logout from './Logout';
-
+import ErrorPage from './ErrorPage';
 
 function Signin(props) {
   const firestore = useFirestore();
   const [signin, setSignin] = useState(false);
+  const [hasError, setError] = useState(false);
+  let error = "";
 
   function addFriendsListToFirestore(name) {
     let friendsListRefGrape = firestore.collection(props.known_pathGrape()).doc("friendsList");
@@ -40,13 +42,15 @@ function Signin(props) {
       props.setCurrentUser(firebase.auth().currentUser.uid)
       addFriendsListToFirestore(firebase.auth().currentUser.displayName)
       setSignin(true)
-      console.log("Successfully signed in!");
     }).catch(function (error) {
-      console.log(error.message);
+      setError(error.message);
     });
 
   }
 
+  if (hasError) {
+    error = <ErrorPage error={hasError}></ErrorPage>
+  }
   if (signin === false) {
     return (
       <React.Fragment>
@@ -63,7 +67,7 @@ function Signin(props) {
               placeholder='Password' />
             <button type='submit'>Sign in</button>
           </form>
-          <Logout setCurrentUser={props.setCurrentUser} pathname={props.known_path} />
+          {error}
         </div>
       </React.Fragment>
     );

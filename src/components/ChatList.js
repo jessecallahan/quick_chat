@@ -14,8 +14,6 @@ function ChatList(props) {
   let path = props.pathname;
   const chats = useSelector(state => state.firestore.ordered[path]);
 
-
-  console.log(chats)
   if (isLoaded(chats)) {
     return (
       <React.Fragment>

@@ -3,10 +3,13 @@ import firebase from "firebase/app";
 import 'firebase/database';
 import { Redirect } from "react-router-dom";
 import { useFirestore } from 'react-redux-firebase';
+import ErrorPage from './ErrorPage';
 
 function Signup() {
   const firestore = useFirestore();
   const [signup, setSignup] = useState(false);
+  const [hasError, setError] = useState(false);
+  let error = "";
 
   function setFriendsList(id) {
     const data = {
@@ -31,11 +34,16 @@ function Signup() {
         displayName: displayName
       })
     }).catch(function (error) {
-      console.log(error.message);
+      console.log(error.message)
+      var errorMessage = error.message;
+      setError(errorMessage);
     });
   }
-
+  if (hasError) {
+    error = <ErrorPage error={hasError}></ErrorPage>
+  }
   if (signup === false) {
+
     return (
       <React.Fragment>
         <div className="center">
@@ -55,9 +63,12 @@ function Signup() {
               placeholder='Password' />
             <button type='submit'>Sign up</button>
           </form>
+          {error}
         </div>
       </React.Fragment>
     );
+
+
   } else {
     return (
       <Redirect

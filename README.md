@@ -1,8 +1,5 @@
 # Notes For Oct 1
 
-make clear component 
-make error component
-
 find font
 style for mobile/table
 

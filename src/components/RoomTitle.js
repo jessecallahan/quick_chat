@@ -12,7 +12,6 @@ function RoomTitle(props) {
       docRef.get().then((doc) => {
         if (doc.exists) {
           setPeople(doc.data().chatRoomName);
-          console.log("this thing: " + doc.data().chatRoomName);
         } else {
           console.log("No such document!");
         }
@@ -23,11 +22,6 @@ function RoomTitle(props) {
 
     send();
   }, [firestore, props])
-
-
-
-
-
 
   return (
     <React.Fragment>

@@ -8,15 +8,15 @@ function ChatClear(props) {
   const firestore = useFirestore();
 
   function deleteCollection(path) {
+
     firestore.collection(path).get().then(querySnapshot => {
       querySnapshot.docs.forEach(snapshot => {
-        // console.log("htis: " + JSON.stringify(snapshot.ref.id))
         if (snapshot.id !== "friendsList") {
           snapshot.ref.delete();
-          // deleteFriendsList()
         }
       })
     })
+
     deleteFriendsList()
   }
 
@@ -28,20 +28,13 @@ function ChatClear(props) {
     });
   }
 
-
-
-
-
   return (
     <div>
-      {/* <button onClick={() => deleteCollection(props.pathname)}>
-        Click here to clear
-      </button> */}
       <button
         className="delete button"
         onClick={() => {
           const confirmBox = window.confirm(
-            "Do you really want to delete this Crumb?"
+            "Are you sure you want to delete the contents in this Chat Room?"
           )
           if (confirmBox === true) {
             deleteCollection(props.pathname)

@@ -15,19 +15,14 @@ function LinkCopy(props) {
   return (
     <React.Fragment>
       <div className="bottom_left">
-        <div className="greenText">
-          {"localhost:3000" + props.main_id}
-        </div>
+        {"localhost:3000" + props.main_id}
         <button onClick={() => copyToClipBoard("localhost:3000" + props.main_id)}>
           Click here to copy
         </button>
         {copySuccess}
       </div>
-
-
-
     </React.Fragment>
-
   )
+
 }
 export default LinkCopy;

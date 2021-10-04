@@ -5,10 +5,8 @@ function Chat(props) {
 
   return (
     <React.Fragment>
-      <div className="background-blue">
-        <h3>{props.name} = {props.content}</h3>
-        <hr />
-      </div>
+      <h3>{props.name} = {props.content}</h3>
+      <hr />
     </React.Fragment>
   );
 }
