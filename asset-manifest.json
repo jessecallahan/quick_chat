@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/quick_chat/static/css/main.ac4e687c.chunk.css",
+    "main.js": "/quick_chat/static/js/main.3db6de82.chunk.js",
+    "main.js.map": "/quick_chat/static/js/main.3db6de82.chunk.js.map",
+    "runtime-main.js": "/quick_chat/static/js/runtime-main.7d1ead4c.js",
+    "runtime-main.js.map": "/quick_chat/static/js/runtime-main.7d1ead4c.js.map",
+    "static/js/2.4f449e70.chunk.js": "/quick_chat/static/js/2.4f449e70.chunk.js",
+    "static/js/2.4f449e70.chunk.js.map": "/quick_chat/static/js/2.4f449e70.chunk.js.map",
+    "index.html": "/quick_chat/index.html",
+    "static/css/main.ac4e687c.chunk.css.map": "/quick_chat/static/css/main.ac4e687c.chunk.css.map",
+    "static/js/2.4f449e70.chunk.js.LICENSE.txt": "/quick_chat/static/js/2.4f449e70.chunk.js.LICENSE.txt",
+    "static/media/grape.e887e9c9.jpg": "/quick_chat/static/media/grape.e887e9c9.jpg",
+    "static/media/lime.fe350886.jpg": "/quick_chat/static/media/lime.fe350886.jpg",
+    "static/media/orange.43ddd268.jpg": "/quick_chat/static/media/orange.43ddd268.jpg",
+    "static/media/title.3aa26e81.jpg": "/quick_chat/static/media/title.3aa26e81.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7d1ead4c.js",
+    "static/js/2.4f449e70.chunk.js",
+    "static/css/main.ac4e687c.chunk.css",
+    "static/js/main.3db6de82.chunk.js"
+  ]
+}
