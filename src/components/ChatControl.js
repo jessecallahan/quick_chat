@@ -43,8 +43,8 @@ function ChatControl(props) {
   else {
 
     topLeftCurrentState = <React.Fragment>
-      <div><RoomTitle pathname={data.pathname}></RoomTitle></div>
-      <div><AnnonSignIn setCurrentUser={props.setCurrentUser} main_id={data.pathname} /></div>
+      <div className="center"><RoomTitle pathname={data.pathname}></RoomTitle>
+        <AnnonSignIn setCurrentUser={props.setCurrentUser} main_id={data.pathname} /></div>
     </React.Fragment>
   }
 

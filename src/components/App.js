@@ -6,7 +6,6 @@ import Signup from "./Signup"
 import Landing from "./Landing"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './../App.css';
-import "./../responsive.css";
 import 'firebase/database';
 import "firebase/auth";
 import { withFirestore } from 'react-redux-firebase';
@@ -34,17 +33,17 @@ class App extends React.Component {
   }
 
   createGrapePath = () => {
-    var newPath = this.state.mainUser + "_grapeRoom"
+    var newPath = "quick_chat/chatrooms/" + this.state.mainUser + "_grapeRoom"
     return newPath
   }
 
   createOrangePath = () => {
-    var newPath = this.state.mainUser + "_orangeRoom"
+    var newPath = "quick_chat/chatrooms/" + this.state.mainUser + "_orangeRoom"
     return newPath
   }
 
   createLimePath = () => {
-    var newPath = this.state.mainUser + "_limeRoom"
+    var newPath = "quick_chat/chatrooms/" + this.state.mainUser + "_limeRoom"
     return newPath
   }
 
@@ -74,7 +73,7 @@ class App extends React.Component {
           currentUser={this.state.currentUser}
         />
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/quick_chat">
             <Landing setHome={this.handleSetHome} />
           </Route>
           <Route path="/signin">

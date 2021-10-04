@@ -1,6 +1,6 @@
 {
-  "name": "quick_chat",
   "homepage": "https://jessecallahan.github.io/quick_chat",
+  "name": "quick_chat",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

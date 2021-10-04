@@ -25,7 +25,7 @@ function FriendList(props) {
   return (
     <React.Fragment>
       <div className="friendsList">
-        <div>Friends In This Chat:</div>
+        <h3>Friends In This Chat:</h3>
         {people.map((friend, index) =>
           <div key={index}>{friend}</div>
         )}

@@ -16,9 +16,9 @@ function Signup() {
       chatRoomName: "",
       names: []
     }
-    firestore.collection(id + "_grapeRoom").doc("friendsList").set(data);
-    firestore.collection(id + "_orangeRoom").doc("friendsList").set(data);
-    firestore.collection(id + "_limeRoom").doc("friendsList").set(data);
+    firestore.collection("/quick_chat/chatrooms/" + id + "_grapeRoom").doc("friendsList").set(data);
+    firestore.collection("/quick_chat/chatrooms/" + id + "_orangeRoom").doc("friendsList").set(data);
+    firestore.collection("/quick_chat/chatrooms/" + id + "_limeRoom").doc("friendsList").set(data);
   }
 
   function doSignUp(event) {
