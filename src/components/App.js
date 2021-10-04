@@ -4,7 +4,7 @@ import Header from './Header'
 import Signin from "./Signin";
 import Signup from "./Signup"
 import Landing from "./Landing"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import './../App.css';
 import 'firebase/database';
 import "firebase/auth";
@@ -16,7 +16,7 @@ class App extends React.Component {
     this.state = {
       mainUser: null,
       currentUser: null,
-      homePage: true
+      homePage: null
     };
   }
 
@@ -33,17 +33,17 @@ class App extends React.Component {
   }
 
   createGrapePath = () => {
-    var newPath = "quick_chat/chatrooms/" + this.state.mainUser + "_grapeRoom"
+    var newPath = "/quick_chat/chatrooms/" + this.state.mainUser + "_grapeRoom"
     return newPath
   }
 
   createOrangePath = () => {
-    var newPath = "quick_chat/chatrooms/" + this.state.mainUser + "_orangeRoom"
+    var newPath = "/quick_chat/chatrooms/" + this.state.mainUser + "_orangeRoom"
     return newPath
   }
 
   createLimePath = () => {
-    var newPath = "quick_chat/chatrooms/" + this.state.mainUser + "_limeRoom"
+    var newPath = "/quick_chat/chatrooms/" + this.state.mainUser + "_limeRoom"
     return newPath
   }
 
@@ -60,9 +60,9 @@ class App extends React.Component {
   }
 
   render() {
-
+    console.log(this.state.mainUser)
     return (
-      <Router>
+      <Router >
         <Header
           home={this.state.homePage}
           setHome={this.handleSetHome}
@@ -73,7 +73,7 @@ class App extends React.Component {
           currentUser={this.state.currentUser}
         />
         <Switch>
-          <Route exact path="/quick_chat">
+          <Route exact path='/'>
             <Landing setHome={this.handleSetHome} />
           </Route>
           <Route path="/signin">

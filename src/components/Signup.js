@@ -29,6 +29,7 @@ function Signup() {
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function (result) {
       setFriendsList(result.user.uid);
+
       setSignup(true);
       return result.user.updateProfile({
         displayName: displayName
