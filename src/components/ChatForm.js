@@ -12,7 +12,7 @@ function NewTicketForm(props) {
     event.preventDefault();
     const user = firebase.auth().currentUser;
 
-    await firestore.collection(props.main_id).add(
+    await firestore.collection(props.pathname).add(
       {
         name: user.displayName,
         content: event.target.content.value,

@@ -16,7 +16,7 @@ class App extends React.Component {
     this.state = {
       mainUser: null,
       currentUser: null,
-      homePage: null
+      homePage: true
     };
   }
 

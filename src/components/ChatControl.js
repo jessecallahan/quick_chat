@@ -24,7 +24,7 @@ function ChatControl(props) {
   const user = firebase.auth().currentUser;
 
   if (user && props.currentUser) {
-    topLeftCurrentState = <ChatForm main_id={data.pathname} />
+    topLeftCurrentState = <ChatForm pathname={data.pathname} />
     linkRender = <React.Fragment><div className="wrapper">
       <div className="bottom_right"><Logout setCurrentUser={props.setCurrentUser} pathname={data.pathname} /></div>
     </div></React.Fragment>
@@ -32,7 +32,7 @@ function ChatControl(props) {
     chatListShow = <ChatList pathname={data.pathname} />
     if (user.uid === props.mainUser) {
       linkRender = <React.Fragment>
-        <LinkCopy main_id={data.pathname} />
+        <LinkCopy pathname={data.pathname} />
         <div className="wrapper">
           <div className="bottom_right"><Logout setCurrentUser={props.setCurrentUser} pathname={data.pathname} />
             <ChatClear pathname={data.pathname} /></div>
@@ -44,7 +44,7 @@ function ChatControl(props) {
 
     topLeftCurrentState = <React.Fragment>
       <div className="center"><RoomTitle pathname={data.pathname}></RoomTitle>
-        <AnnonSignIn setCurrentUser={props.setCurrentUser} main_id={data.pathname} /></div>
+        <AnnonSignIn setCurrentUser={props.setCurrentUser} pathname={data.pathname} /></div>
     </React.Fragment>
   }
 

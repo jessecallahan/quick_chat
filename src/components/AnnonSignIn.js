@@ -9,7 +9,7 @@ export default function AnnonSignIn(props) {
   let error = "";
 
   function friendPart(name) {
-    var friendsListRef = firestore.collection(props.main_id).doc("friendsList");
+    var friendsListRef = firestore.collection(props.pathname).doc("friendsList");
     friendsListRef.update({
       names: firebase.firestore.FieldValue.arrayUnion(name)
     });
