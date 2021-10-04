@@ -29,7 +29,7 @@ function Header(props) {
             <div className="header">
               <div className="row">
                 <div className="column">
-                  <Link to="/quick_chat">
+                  <Link to="/">
                     <img src={title} className="title_photo" alt='title'></img>
                   </Link>
                 </div>
@@ -67,7 +67,7 @@ function Header(props) {
             <div className="parent1">
               <div className="row">
                 <div className="column">
-                  <Link to="/quick_chat">
+                  <Link to="/">
                     <img src={title} onClick={() => props.setHome(true)} className="title_photo" alt='title'></img>
                   </Link>
                 </div>
@@ -84,7 +84,7 @@ function Header(props) {
           <div className="parent1">
             <div className="row">
               <div className="column">
-                <Link to="/quick_chat">
+                <Link to="/">
                   <img src={title} onClick={() => props.setHome(true)} className="title_photo" alt='title'></img>
                 </Link>
               </div>
