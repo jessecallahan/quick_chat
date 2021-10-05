@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/quick_chat/static/css/main.b80ec552.chunk.css",
+    "main.css": "/quick_chat/static/css/main.cd56f368.chunk.css",
     "main.js": "/quick_chat/static/js/main.87ff63f3.chunk.js",
     "main.js.map": "/quick_chat/static/js/main.87ff63f3.chunk.js.map",
     "runtime-main.js": "/quick_chat/static/js/runtime-main.7d1ead4c.js",
@@ -8,7 +8,7 @@
     "static/js/2.ecf6bd22.chunk.js": "/quick_chat/static/js/2.ecf6bd22.chunk.js",
     "static/js/2.ecf6bd22.chunk.js.map": "/quick_chat/static/js/2.ecf6bd22.chunk.js.map",
     "index.html": "/quick_chat/index.html",
-    "static/css/main.b80ec552.chunk.css.map": "/quick_chat/static/css/main.b80ec552.chunk.css.map",
+    "static/css/main.cd56f368.chunk.css.map": "/quick_chat/static/css/main.cd56f368.chunk.css.map",
     "static/js/2.ecf6bd22.chunk.js.LICENSE.txt": "/quick_chat/static/js/2.ecf6bd22.chunk.js.LICENSE.txt",
     "static/media/grape.e887e9c9.jpg": "/quick_chat/static/media/grape.e887e9c9.jpg",
     "static/media/lime.fe350886.jpg": "/quick_chat/static/media/lime.fe350886.jpg",
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.7d1ead4c.js",
     "static/js/2.ecf6bd22.chunk.js",
-    "static/css/main.b80ec552.chunk.css",
+    "static/css/main.cd56f368.chunk.css",
     "static/js/main.87ff63f3.chunk.js"
   ]
 }
