@@ -33,17 +33,17 @@ class App extends React.Component {
   }
 
   createGrapePath = () => {
-    var newPath = "/quick_chat/chatrooms/" + this.state.mainUser + "_grapeRoom"
+    var newPath = this.state.mainUser + "_grapeRoom"
     return newPath
   }
 
   createOrangePath = () => {
-    var newPath = "/quick_chat/chatrooms/" + this.state.mainUser + "_orangeRoom"
+    var newPath = this.state.mainUser + "_orangeRoom"
     return newPath
   }
 
   createLimePath = () => {
-    var newPath = "/quick_chat/chatrooms/" + this.state.mainUser + "_limeRoom"
+    var newPath = this.state.mainUser + "_limeRoom"
     return newPath
   }
 
@@ -60,7 +60,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.mainUser)
     return (
       <Router >
         <Header

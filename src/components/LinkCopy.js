@@ -15,8 +15,8 @@ function LinkCopy(props) {
   return (
     <React.Fragment>
       <div className="bottom_left">
-        {"https://jessecallahan.github.io" + props.pathname}
-        <button onClick={() => copyToClipBoard("https://jessecallahan.github.io" + props.pathname)}>
+        {"https://jessecallahan.github.io/quick_chat/#" + props.pathname}
+        <button onClick={() => copyToClipBoard("https://jessecallahan.github.io/quick_chat/#" + props.pathname)}>
           Click here to copy
         </button>
       </div>
