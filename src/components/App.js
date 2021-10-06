@@ -60,6 +60,7 @@ class App extends React.Component {
   }
 
   render() {
+
     return (
       <Router >
         <Header
@@ -106,5 +107,6 @@ class App extends React.Component {
     );
   }
 }
+
 
 export default withFirestore(App);

@@ -58,7 +58,7 @@ function Signin(props) {
           <h1>Sign In</h1>
           <form onSubmit={doSignIn}>
             <input
-              type='text'
+              type="email"
               name='signinEmail'
               placeholder='email' />
             <input

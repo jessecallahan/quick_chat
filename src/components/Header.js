@@ -6,6 +6,7 @@ import title from "../assets/title.jpg"
 import grape from "../assets/grape.jpg"
 import orange from "../assets/orange.jpg"
 import lime from "../assets/lime.jpg"
+import { useLocation } from "react-router-dom";
 import "firebase/auth";
 
 function Header(props) {
@@ -13,72 +14,47 @@ function Header(props) {
   let orangePath = props.known_pathOrange();
   let limePath = props.known_pathLime();
   let user = firebase.auth().currentUser;
+  let data = useLocation();
+  console.log(data)
 
-  if (props.home) {
-    return (
-      <React.Fragment> <div className="header">
-        <div className="row">
-          <div className="column"></div></div></div><br></br><br></br>
-      </React.Fragment>);
-  } else {
-
-    if (firebase.auth().currentUser && props.currentUser) {
-      if (props.mainUser === user.uid) {
-        return (
-          <React.Fragment>
-            <div className="header">
-              <div className="row">
-                <div className="column">
-                  <Link to="/">
-                    <img src={title} className="title_photo" alt='title'></img>
-                  </Link>
-                </div>
-                <div className="column" >
-                  <Link to={{
-                    pathname: grapePath
-                  }}
-                  >
-                    <img src={grape} className="photo" alt='title'></img>
-                  </Link>
-                </div>
-                <div className="column" >
-                  <Link to={{
-                    pathname: orangePath
-                  }}>
-                    <img src={orange} className="photo" alt='title'></img>
-                  </Link>
-                </div>
-                <div className="column" >
-                  <Link to={{
-                    pathname: limePath
-                  }}>
-                    <img src={lime} className="photo" alt='title'></img>
-                  </Link>
-                </div>
+  if (firebase.auth().currentUser && props.currentUser) {
+    if (props.mainUser === user.uid) {
+      return (
+        <React.Fragment>
+          <div className="header">
+            <div className="row">
+              <div className="column">
+                <Link to="/">
+                  <img src={title} className="title_photo" alt='title'></img>
+                </Link>
+              </div>
+              <div className="column" >
+                <Link to={{
+                  pathname: grapePath
+                }}
+                >
+                  <img src={grape} className="photo" alt='title'></img>
+                </Link>
+              </div>
+              <div className="column" >
+                <Link to={{
+                  pathname: orangePath
+                }}>
+                  <img src={orange} className="photo" alt='title'></img>
+                </Link>
+              </div>
+              <div className="column" >
+                <Link to={{
+                  pathname: limePath
+                }}>
+                  <img src={lime} className="photo" alt='title'></img>
+                </Link>
               </div>
             </div>
-          </React.Fragment >
-        )
-
-      } else {
-
-        return (
-          <React.Fragment>
-            <div className="parent1">
-              <div className="row">
-                <div className="column">
-                  <Link to="/">
-                    <img src={title} onClick={() => props.setHome(true)} className="title_photo" alt='title'></img>
-                  </Link>
-                </div>
-
-              </div>
-            </div>
-          </React.Fragment >
-        );
-      }
+          </div>
+        </React.Fragment >
+      )
     } else {
-
       return (
         <React.Fragment>
           <div className="parent1">
@@ -93,7 +69,122 @@ function Header(props) {
         </React.Fragment >
       );
     }
+  } else {
+    if (data.pathname === "/" || props.home) {
+      return (
+        <React.Fragment> <div className="header">
+          <div className="row">
+            <div className="column"></div></div></div><br></br><br></br>
+        </React.Fragment>);
+    } else {
+      return (
+        <React.Fragment>
+          <div className="parent1">
+            <div className="row">
+              <div className="column">
+                <Link to="/">
+                  <img src={title} onClick={() => props.setHome(true)} className="title_photo" alt='title'></img>
+                </Link>
+              </div>
+
+            </div>
+          </div>
+        </React.Fragment >
+      );
+    }
   }
+
+
+
+
+
+  // if (props.home) {
+  //   return (
+  //     <React.Fragment> <div className="header">
+  //       <div className="row">
+  //         <div className="column"></div></div></div><br></br><br></br>
+  //     </React.Fragment>);
+  // } else {
+  //   if (data.pathname === "/") {
+  //     return (
+  //       <React.Fragment> <div className="header">
+  //         <div className="row">
+  //           <div className="column"></div></div></div><br></br><br></br>
+  //       </React.Fragment>);
+  //   } else {
+  //     if (firebase.auth().currentUser && props.currentUser) {
+  //       if (props.mainUser === user.uid) {
+  //         return (
+  //           <React.Fragment>
+  //             <div className="header">
+  //               <div className="row">
+  //                 <div className="column">
+  //                   <Link to="/">
+  //                     <img src={title} className="title_photo" alt='title'></img>
+  //                   </Link>
+  //                 </div>
+  //                 <div className="column" >
+  //                   <Link to={{
+  //                     pathname: grapePath
+  //                   }}
+  //                   >
+  //                     <img src={grape} className="photo" alt='title'></img>
+  //                   </Link>
+  //                 </div>
+  //                 <div className="column" >
+  //                   <Link to={{
+  //                     pathname: orangePath
+  //                   }}>
+  //                     <img src={orange} className="photo" alt='title'></img>
+  //                   </Link>
+  //                 </div>
+  //                 <div className="column" >
+  //                   <Link to={{
+  //                     pathname: limePath
+  //                   }}>
+  //                     <img src={lime} className="photo" alt='title'></img>
+  //                   </Link>
+  //                 </div>
+  //               </div>
+  //             </div>
+  //           </React.Fragment >
+  //         )
+
+  //       } else {
+
+  //         return (
+  //           <React.Fragment>
+  //             <div className="parent1">
+  //               <div className="row">
+  //                 <div className="column">
+  //                   <Link to="/">
+  //                     <img src={title} onClick={() => props.setHome(true)} className="title_photo" alt='title'></img>
+  //                   </Link>
+  //                 </div>
+
+  //               </div>
+  //             </div>
+  //           </React.Fragment >
+  //         );
+  //       }
+  //     } else {
+
+  //       return (
+  //         <React.Fragment>
+  //           <div className="parent1">
+  //             <div className="row">
+  //               <div className="column">
+  //                 <Link to="/">
+  //                   <img src={title} onClick={() => props.setHome(true)} className="title_photo" alt='title'></img>
+  //                 </Link>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         </React.Fragment >
+  //       );
+  //     }
+  //   }
+  // }
 }
 
 Header.propTypes = {
