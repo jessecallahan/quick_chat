@@ -24,4 +24,5 @@ Firebase/Firestore and react-redux-firebase are used to handle the database.
 jessetylercallahan@gmail.com
 
 
-![title](./src/assets/icon.jpg){style="float:right"}
+![title](){style="float:right"}
+<img style="float: right;" src="./src/assets/icon.jpg">
