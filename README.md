@@ -1,7 +1,7 @@
 #### Jesse Callahan
 
 #### Quick Chat
-![title](./src/assets/img/title.jpg)
+![title](./src/assets/title.jpg)
 
 ##### Description
 Quick Chat is an application that allows you to chat quickly
