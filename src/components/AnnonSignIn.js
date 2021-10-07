@@ -39,7 +39,7 @@ export default function AnnonSignIn(props) {
   }
   return (
     <React.Fragment>
-      <h1>Type You're Name and Go!</h1>
+      <h1>Type Your Name and Go!</h1>
       <form onSubmit={annonSignIn}>
         <input
           type='text'

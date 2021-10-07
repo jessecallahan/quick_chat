@@ -1,7 +1,30 @@
-# Notes For Oct 1
+#### Jesse Callahan
 
-find font
+#### Quick Chat
+![title](./src/assets/img/title.jpg)
 
-make sure props and protypes are good, clean components - refactor/rename
+##### Description
+Quick Chat is an application that allows you to chat quickly
 
-fix readme
+
+#### How it works 
+One user can sign up via email. When they are signed in they have the ability to send three different chat rooms to this friends. 
+
+As a friend, you just put in your name and go!
+
+Chat room getting a little too messy? Click the clear chat room button at the bottom.
+
+Quick Chat is made easy. Send links to your friends and you're good to go. No signing up for a service or downloading an app. 
+
+## Technologies Used
+
+Quick Chat is made with React.
+
+Firebase/Firestore and react-redux-firebase are used to handle the database. 
+
+## Contact Information
+
+jessetylercallahan@gmail.com
+
+
+![title](./src/assets/img/pineapple.jpg)
