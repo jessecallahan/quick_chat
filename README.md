@@ -5,11 +5,11 @@ Quick Chat is an application that allows you to chat quickly
 
 
 ## How it works 
-One user can sign up via email. When they are signed in they have the ability to send three different chat rooms to this friends. 
+One user can sign up via email. When they are signed in they have the ability to send three different chat rooms to their friends. 
 
 As a friend, you just put in your name and go!
 
-Chat room getting a little too messy? Click the clear chat room button at the bottom.
+Chat room getting a little too messy? Click the clear chat room user the clear chat room button at the bottom.
 
 Quick Chat is made easy. Send links to your friends and you're good to go. No signing up for a service or downloading an app. 
 
@@ -17,7 +17,7 @@ Quick Chat is made easy. Send links to your friends and you're good to go. No si
 
 Quick Chat is made with React.
 
-Firebase/Firestore and react-redux-firebase are used to handle the database's read/write ability. Also it's authorization and authentication . 
+Firebase/Firestore and react-redux-firebase are used for the database side of things including read/write, authorization and authentication. 
 
 ## Contact Information<img align="right" width="100" height="100" src="./src/assets/icon.jpg">
 
