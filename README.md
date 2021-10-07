@@ -20,7 +20,7 @@ Quick Chat is made with React.
 Firebase/Firestore and react-redux-firebase are used to handle the database's read/write ability. Also it's authorization and authentication. 
 
 ## Contact Information
-
-jessetylercallahan@gmail.com
-
 <img style="float:right;height:100px;" src="./src/assets/icon.jpg">
+jessetylercallahan@gmail.com 
+
+
