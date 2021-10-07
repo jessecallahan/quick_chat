@@ -1,5 +1,3 @@
-#### Jesse Callahan
-
 ![title](./src/assets/title.jpg)
 
 ## Description
@@ -26,4 +24,4 @@ Firebase/Firestore and react-redux-firebase are used to handle the database.
 jessetylercallahan@gmail.com
 
 
-![title](./src/assets/img/pineapple.jpg)
+![title](./src/assets/img/icon.jpg){style="float:right"}
