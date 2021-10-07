@@ -3,7 +3,6 @@ import firebase from "firebase/app";
 import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useFirestore } from 'react-redux-firebase';
-import Logout from './Logout';
 import ErrorPage from './ErrorPage';
 
 function Signin(props) {
