@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 function LinkCopy(props) {
   // const [copySuccess, setCopySuccess] = useState('');
@@ -25,7 +26,7 @@ function LinkCopy(props) {
 
 }
 
-Landing.propTypes = {
+LinkCopy.propTypes = {
   pathname: PropTypes.string
 }
 
