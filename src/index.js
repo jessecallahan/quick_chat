@@ -9,6 +9,7 @@ import { createFirestoreInstance } from 'redux-firestore';
 import firebase from "./firebase";
 import 'firebase/auth';
 import './index.css';
+import './assets/icon.jpg';
 
 const store = createStore(rootReducer);
 
