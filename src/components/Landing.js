@@ -1,8 +1,9 @@
 import React from 'react'
 import title from "../assets/title.jpg"
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-export default function Landing(props) {
+function Landing(props) {
   return (
     <React.Fragment>
       <div className="center">
@@ -20,7 +21,18 @@ export default function Landing(props) {
           Need an account?&nbsp;
           <Link onClick={() => props.setHome(false)} to="/signup">Sign Up Here</Link>
         </h4>
+        <p>
+          <i>
+            for those interested the <a href="https://github.com/jessecallahan/quick_chat">github</a>
+          </i>
+        </p>
       </div>
     </React.Fragment>
   )
 }
+
+Landing.propTypes = {
+  setHome: PropTypes.func
+}
+
+export default Landing;

@@ -13,9 +13,7 @@ function Chat(props) {
 
 Chat.propTypes = {
   name: PropTypes.string,
-  content: PropTypes.string.isRequired,
-  user_id: PropTypes.string,
-  id: PropTypes.string
+  content: PropTypes.string.isRequired
 };
 
 export default Chat;

@@ -57,9 +57,6 @@ function ChatControl(props) {
       <div className="div2">
         {chatListShow}
       </div>
-      {/* <div className="div3"> */}
-
-      {/* </div> */}
       {linkRender}
     </div>
   )

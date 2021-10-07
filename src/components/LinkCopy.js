@@ -25,5 +25,8 @@ function LinkCopy(props) {
 
 }
 
+Landing.propTypes = {
+  pathname: PropTypes.string
+}
 
 export default LinkCopy;
