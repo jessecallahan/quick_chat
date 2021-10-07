@@ -1,13 +1,12 @@
 #### Jesse Callahan
 
-#### Quick Chat
 ![title](./src/assets/title.jpg)
 
-##### Description
+## Description
 Quick Chat is an application that allows you to chat quickly
 
 
-#### How it works 
+## How it works 
 One user can sign up via email. When they are signed in they have the ability to send three different chat rooms to this friends. 
 
 As a friend, you just put in your name and go!
